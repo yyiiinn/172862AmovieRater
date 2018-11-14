@@ -23,49 +23,44 @@
             android:layout_height="wrap_content" tools:layout_editor_absoluteY="61dp"
             tools:layout_editor_absoluteX="0dp" android:id="@+id/textView10"/>
     <TextView
-            android:text="Venom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" tools:layout_editor_absoluteY="80dp"
-            tools:layout_editor_absoluteX="0dp" android:id="@+id/textView11" android:textSize="20sp"/>
+            tools:layout_editor_absoluteX="0dp" android:id="@+id/nameView" android:textSize="20sp"/>
     <TextView
             android:text="Overview:"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" tools:layout_editor_absoluteY="135dp"
             tools:layout_editor_absoluteX="0dp" android:id="@+id/textView12"/>
     <TextView
-            android:text="When eddy Brock acquires the powers of a symbiote, he will have to release his alter-ego Venom to save his life"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" tools:layout_editor_absoluteY="154dp"
-            tools:layout_editor_absoluteX="0dp" android:id="@+id/textView13" android:textSize="20sp"/>
+            tools:layout_editor_absoluteX="0dp" android:id="@+id/descView" android:textSize="20sp"/>
     <TextView
             android:text="Language:"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" tools:layout_editor_absoluteY="246dp"
             tools:layout_editor_absoluteX="0dp" android:id="@+id/textView14"/>
     <TextView
-            android:text="English"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" tools:layout_editor_absoluteY="265dp"
-            tools:layout_editor_absoluteX="0dp" android:id="@+id/textView15" android:textSize="20sp"/>
+            tools:layout_editor_absoluteX="0dp" android:id="@+id/languageView" android:textSize="20sp"/>
     <TextView
             android:text="Release Date:"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" tools:layout_editor_absoluteY="317dp"
             tools:layout_editor_absoluteX="0dp" android:id="@+id/textView16"/>
     <TextView
-            android:text="03-10-2018"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" tools:layout_editor_absoluteY="336dp"
-            tools:layout_editor_absoluteX="0dp" android:id="@+id/textView17" android:textSize="20sp"/>
+            tools:layout_editor_absoluteX="0dp" android:id="@+id/dateView" android:textSize="20sp"/>
     <TextView
             android:text="Suitable for children below 13:"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" tools:layout_editor_absoluteY="385dp"
             tools:layout_editor_absoluteX="0dp" android:id="@+id/textView18"/>
     <TextView
-            android:text="Yes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" tools:layout_editor_absoluteY="404dp"
-            tools:layout_editor_absoluteX="0dp" android:id="@+id/textView19" android:textSize="20sp"/>
+            tools:layout_editor_absoluteX="0dp" android:id="@+id/suitableView" android:textSize="20sp"/>
 
 </LinearLayout>
