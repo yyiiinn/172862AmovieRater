@@ -74,19 +74,19 @@
             tools:layout_editor_absoluteX="0dp" android:id="@+id/suitableage"/>
     <LinearLayout
             android:orientation="horizontal"
-            android:layout_height="wrap_content" android:layout_width="match_parent">
+            android:layout_height="wrap_content" android:layout_width="match_parent" android:weightSum="1">
         <CheckBox
                 android:text="Language Used"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content" tools:layout_editor_absoluteY="289dp"
                 tools:layout_editor_absoluteX="144dp" android:id="@+id/languageUsed"
-                android:visibility="invisible"/>
+                android:visibility="invisible" android:layout_weight="0.5"/>
         <CheckBox
                 android:text="Violence"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" tools:layout_editor_absoluteY="289dp"
                 tools:layout_editor_absoluteX="0dp" android:id="@+id/violence"
-                android:visibility="invisible"/>
+                android:visibility="invisible" android:layout_weight="0.5"/>
     </LinearLayout>
     <Button
             android:text="Add Movie"

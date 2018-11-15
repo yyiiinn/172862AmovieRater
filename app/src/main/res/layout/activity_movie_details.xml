@@ -7,10 +7,10 @@
         android:layout_height="match_parent"
         tools:context=".movieDetails" android:orientation="vertical">
     <ImageView
-            android:layout_width="75dp"
-            android:layout_height="131dp" app:srcCompat="@drawable/filmicon" android:id="@+id/imageView"
+            android:layout_width="126dp"
+            app:srcCompat="@drawable/filmicon" android:id="@+id/imageView"
             android:layout_gravity="center"
-    />
+            android:layout_height="74dp"/>
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="wrap_content"
