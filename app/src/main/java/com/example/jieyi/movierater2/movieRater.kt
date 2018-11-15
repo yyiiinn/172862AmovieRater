@@ -8,10 +8,7 @@ import android.widget.Toast
 
 
 class movieRater : AppCompatActivity() {
-    var suitable = ""
-    var language = ""
-    var violenceText = ""
-    var notSuitable = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_rater)
@@ -19,28 +16,10 @@ class movieRater : AppCompatActivity() {
             if(suitableage.isChecked == true){
                 violence.visibility= View.VISIBLE
                 languageUsed.visibility= View.VISIBLE
-                suitable="Suitable for all ages = false" + "\n"
             }
             if(suitableage.isChecked == false){
                 violence.visibility= View.INVISIBLE
                 languageUsed.visibility= View.INVISIBLE
-                suitable="Suitable for all ages = true" + "\n"
-            }
-        })
-        languageUsed.setOnClickListener(View.OnClickListener{
-            if(languageUsed.isChecked == true){
-                language = "Language"
-            }
-            if(languageUsed.isChecked == false){
-                language = ""
-            }
-        })
-        violence.setOnClickListener(View.OnClickListener{
-            if(violence.isChecked == true){
-                violenceText = "Violence"
-            }
-            if(violence.isChecked == false){
-                violenceText = ""
             }
         })
     }
@@ -72,21 +51,28 @@ class movieRater : AppCompatActivity() {
         return language
     }
     fun btnClick(v: View){
-//        textView4.text="clicked"
+        var suitable = ""
+        var text = ""
         var name = namefield.getText().toString()
         var description = descfield.getText().toString()
         var date = releasedate.getText().toString()
         val duration = Toast.LENGTH_SHORT
-        if(language == ""){
-            notSuitable = "Reason"  + "\n" + violenceText
+        if(languageUsed.isChecked == true){
+           text += "Language" + "\n"
         }
-        if(violenceText == ""){
-            notSuitable = "Reason"  + "\n" + language
+        if(violence.isChecked == true){
+            text += "Violence"
         }
-        if(language != "" && violenceText != ""){
-            notSuitable = "Reason"  + "\n" + language + "\n" + violenceText
+        if(suitableage.isChecked == true && (languageUsed.isChecked == true || violence.isChecked == true)){
+            suitable = "Suitable for all ages = false" + "\n" + "Reason" + "\n"
         }
-        val toast = Toast.makeText(applicationContext, "title="+name+"\n"+"Overview="+description+"\n"+"Release Date="+date+"\n"+"Language="+radio()+"\n"+suitable+notSuitable, duration)
+        else if(suitableage.isChecked == true && (languageUsed.isChecked == false && violence.isChecked == false)){
+            suitable = "Suitable for all ages = false" + "\n"
+        }
+        else if(suitableage.isChecked == false){
+            suitable = "Suitable for all ages = true" + "\n"
+        }
+        val toast = Toast.makeText(applicationContext,  "title="+name+"\n"+"Overview="+description+"\n"+"Release Date="+date+"\n"+"Language="+radio()+"\n"+suitable+text, duration)
         if(btnValidate() == true){
             toast.show()
         }
