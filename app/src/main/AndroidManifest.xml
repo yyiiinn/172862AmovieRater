@@ -28,7 +28,7 @@
                 android:name=".landingPage"
                 android:exported="true">
         </activity>
-        <activity android:name=".movie_edit"
+        <activity android:name=".editMovie"
                   android:exported="true">
         </activity>
     </application>

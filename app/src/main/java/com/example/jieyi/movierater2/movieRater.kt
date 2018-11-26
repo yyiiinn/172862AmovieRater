@@ -3,6 +3,8 @@ package com.example.jieyi.movierater2
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.Menu
+import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_movie_rater.*
 import android.widget.Toast
 
@@ -76,5 +78,27 @@ class movieRater : AppCompatActivity() {
         if(btnValidate() == true){
             toast.show()
         }
+    }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        getMenuInflater().inflate(R.menu.movieadd_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        if(item?.itemId == R.id.clear){
+             namefield.getText().clear()
+             descfield.getText().clear()
+             releasedate.getText().clear()
+            if(suitableage.isChecked()) {
+                suitableage.toggle()
+            }
+            violence.visibility= View.INVISIBLE
+            languageUsed.visibility= View.INVISIBLE
+             languageUsed.isChecked = false
+            if(radio() != "English"){
+                
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
