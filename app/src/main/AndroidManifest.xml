@@ -9,7 +9,8 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".movieRater">
+        <activity android:name=".movieRater"
+                  android:parentActivityName=".landingPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -18,10 +19,12 @@
         </activity>
         <activity
                 android:name=".movieDetails"
+                android:parentActivityName=".landingPage"
                 android:exported="true">
         </activity>
         <activity
                 android:name=".movieRating"
+                android:parentActivityName=".movieDetails"
                 android:exported="true">
         </activity>
         <activity
@@ -29,6 +32,7 @@
                 android:exported="true">
         </activity>
         <activity android:name=".editMovie"
+                  android:parentActivityName=".movieDetails"
                   android:exported="true">
         </activity>
     </application>

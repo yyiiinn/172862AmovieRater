@@ -1,5 +1,6 @@
 package com.example.jieyi.movierater2
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -96,8 +97,12 @@ class movieRater : AppCompatActivity() {
             languageUsed.visibility= View.INVISIBLE
              languageUsed.isChecked = false
             if(radio() != "English"){
-                
+                radioButton.setChecked(true);
             }
+        }
+        if(item?.itemId == R.id.addMovie){
+            val intent = Intent(this, movieDetails::class.java)
+            startActivity(intent)
         }
         return super.onOptionsItemSelected(item)
     }
