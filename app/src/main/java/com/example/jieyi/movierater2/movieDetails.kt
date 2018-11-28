@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.ContextMenu
 import android.view.MenuItem
 import android.view.View
+import android.widget.TextView
+import android.widget.RatingBar
 import kotlinx.android.synthetic.main.activity_movie_details.*
 
 class movieDetails : AppCompatActivity() {
@@ -29,17 +31,27 @@ class movieDetails : AppCompatActivity() {
         setContentView(R.layout.activity_movie_details)
         registerForContextMenu(addReview)
         var movieInfo = Details("Venom", "When eddy Brock acquires the powers of a symbiote, he will have to release his alter-ego Venom to save his life", "English", "03-10-2018", true)
-        nameView.text = movieInfo.title
-        descView.text = movieInfo.overview
-        languageView.text = movieInfo.language
-        dateView.text = movieInfo.date
-        var suitable = ""
-        if (movieInfo.suitable == true){
-            suitable = "Yes"
+//        nameView.text = movieInfo.title
+//        descView.text = movieInfo.overview
+//        languageView.text = movieInfo.language
+//        dateView.text = movieInfo.date
+//        var suitable = ""
+//        if (movieInfo.suitable == true){
+//            suitable = "Yes"
+//        }
+//        else
+//            suitable = "No"
+//        suitableView.text = suitable
+        nameView.text = intent.getStringExtra("title")
+        descView.text = intent.getStringExtra("overview")
+        languageView.text = intent.getStringExtra("language")
+        dateView.text = intent.getStringExtra("date")
+        suitableView.text = intent.getStringExtra("suitable")
+        var rating = intent.getStringExtra("rating")
+        var bar = intent.getStringExtra("bar")
+        val textView = findViewById<TextView>(R.id.addReview).apply {
+            text = bar + "\n" + rating
         }
-        else
-            suitable = "No"
-        suitableView.text = suitable
     }
     override fun onCreateContextMenu(menu: ContextMenu?, v: View?, menuInfo: ContextMenu.ContextMenuInfo?) {
         super.onCreateContextMenu(menu, v, menuInfo)

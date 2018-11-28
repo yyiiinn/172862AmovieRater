@@ -7,6 +7,9 @@ import android.content.Intent
 import android.view.MenuItem
 import android.view.View
 import kotlinx.android.synthetic.main.activity_edit_movie.*
+import android.widget.RatingBar
+
+
 
 class editMovie : AppCompatActivity() {
 
