@@ -8,15 +8,19 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
 import android.widget.RatingBar
+import android.widget.LinearLayout
+import kotlinx.android.synthetic.main.activity_edit_movie.*
 import kotlinx.android.synthetic.main.activity_movie_details.*
+import kotlinx.android.synthetic.main.activity_movie_rating.*
+
 
 class movieDetails : AppCompatActivity() {
-    class Details(title:String, overview:String, language:String, date:String, suitable:Boolean){
+    class Details(title:String, overview:String, language:String, date:String, suitable:String){
         var title: String
         var overview: String
         var language: String
         var date: String
-        var suitable: Boolean
+        var suitable: String
         init{
             this.title = title
             this.overview = overview
@@ -26,31 +30,46 @@ class movieDetails : AppCompatActivity() {
         }
 
     }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_details)
-        registerForContextMenu(addReview)
-        var movieInfo = Details("Venom", "When eddy Brock acquires the powers of a symbiote, he will have to release his alter-ego Venom to save his life", "English", "03-10-2018", true)
-//        nameView.text = movieInfo.title
-//        descView.text = movieInfo.overview
-//        languageView.text = movieInfo.language
-//        dateView.text = movieInfo.date
-//        var suitable = ""
-//        if (movieInfo.suitable == true){
-//            suitable = "Yes"
+        registerForContextMenu(linear)
+        var review = intent.getStringExtra("rating")
+        var starrating = intent.getStringExtra("bar")
+        val linearLayout = findViewById<LinearLayout>(R.id.linear)
+        if(review == null && starrating == null){
+        var movieInfo = Details(intent.getStringExtra("title"), intent.getStringExtra("overview"), intent.getStringExtra("language"),intent.getStringExtra("date"), intent.getStringExtra("suitable") )
+        nameView.text = movieInfo.title
+        descView.text = movieInfo.overview
+        languageView.text = movieInfo.language
+        dateView.text = movieInfo.date
+        suitableView.text = movieInfo.suitable
+
+        var addreview = TextView(this)
+        addreview.text = "add review"
+        linearLayout.addView(addreview)
+//        val textView = findViewById<TextView>(R.id.addReview).apply {
+//            text = "add a review"
 //        }
-//        else
-//            suitable = "No"
-//        suitableView.text = suitable
-        nameView.text = intent.getStringExtra("title")
-        descView.text = intent.getStringExtra("overview")
-        languageView.text = intent.getStringExtra("language")
-        dateView.text = intent.getStringExtra("date")
-        suitableView.text = intent.getStringExtra("suitable")
-        var rating = intent.getStringExtra("rating")
-        var bar = intent.getStringExtra("bar")
-        val textView = findViewById<TextView>(R.id.addReview).apply {
-            text = bar + "\n" + rating
+        }
+        else {
+            nameView.text = intent.getStringExtra("title")
+            descView.text = intent.getStringExtra("overview")
+            languageView.text = intent.getStringExtra("language")
+            dateView.text = intent.getStringExtra("date")
+            suitableView.text = intent.getStringExtra("suitable")
+
+            val ratingBar = RatingBar(this)
+            ratingBar.numStars = 5
+            ratingBar.setRating(starrating.toFloat())
+            val showReview = TextView(this)
+            showReview.textSize = 20f
+            showReview.text = review
+            linearLayout.addView(ratingBar)
+            linearLayout.addView(showReview)
+
         }
     }
     override fun onCreateContextMenu(menu: ContextMenu?, v: View?, menuInfo: ContextMenu.ContextMenuInfo?) {
@@ -61,6 +80,11 @@ class movieDetails : AppCompatActivity() {
     override fun onContextItemSelected(item: MenuItem?): Boolean {
         if(item?.itemId == R.id.review){
             val intent = Intent(this, movieRating::class.java)
+            intent.putExtra("title", nameView.text)
+            intent.putExtra("overview", descView.text)
+            intent.putExtra("language", languageView.text)
+            intent.putExtra("date", dateView.text)
+            intent.putExtra("suitable", suitableView.text)
             startActivity(intent)
         }
         return super.onContextItemSelected(item)

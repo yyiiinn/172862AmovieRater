@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.EditText
 import kotlinx.android.synthetic.main.activity_movie_rater.*
 import android.widget.Toast
 
@@ -44,7 +45,7 @@ class movieRater : AppCompatActivity() {
     }
     fun radio():String{
         var language = ""
-        var id = radioGroup.checkedRadioButtonId;
+        var id = radioGroup.checkedRadioButtonId
         when (id) {
             R.id.radioButton -> language = "English"
             R.id.radioButton2 -> language = "Chinese"
@@ -76,23 +77,32 @@ class movieRater : AppCompatActivity() {
         }
         if(item?.itemId == R.id.addMovie){
             var suitable = ""
-            var text = ""
             var name = namefield.getText().toString()
             var description = descfield.getText().toString()
             var date = releasedate.getText().toString()
             if(suitableage.isChecked()) {
-                suitable = "No"
+                if(violence.isChecked == true && languageUsed.isChecked == true)
+                    suitable = "No (Violence, Language Used)"
+                else if(violence.isChecked == true && languageUsed.isChecked == false)
+                    suitable = "No (Violence)"
+                else if(violence.isChecked == false && languageUsed.isChecked == true)
+                    suitable = "No (Language Used)"
+                else
+                    suitable = "No"
             }
             else{
                 suitable = "Yes"
             }
-            val intent = Intent(this, movieDetails::class.java)
-            intent.putExtra("title", name)
-            intent.putExtra("overview", description)
-            intent.putExtra("language", radio())
-            intent.putExtra("date", date)
-            intent.putExtra("suitable", suitable)
-            startActivity(intent)
+            if(btnValidate()==true) {
+
+                val intent = Intent(this, movieDetails::class.java)
+                intent.putExtra("title", name)
+                intent.putExtra("overview", description)
+                intent.putExtra("language", radio())
+                intent.putExtra("date", date)
+                intent.putExtra("suitable", suitable)
+                startActivity(intent)
+            }
         }
         return super.onOptionsItemSelected(item)
     }

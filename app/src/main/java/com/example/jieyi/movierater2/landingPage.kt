@@ -6,15 +6,24 @@ import android.view.ContextMenu
 import android.view.View
 import android.content.Intent
 import android.view.Menu
+import android.widget.ListView
 import android.view.MenuItem
+import android.widget.ArrayAdapter
 import kotlinx.android.synthetic.main.activity_landing_page.*
+
+
 
 class landingPage : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_landing_page)
-
+//        var listView:ListView = findViewById<ListView>(R.id.listView)
+//        val listItems = arrayListOf<String>();
+//        listItems.add("hi")
+//        listItems.add("hello")
+//        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listItems)
+//        listView.adapter = adapter
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -30,7 +39,7 @@ class landingPage : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    
+
 
 
 }

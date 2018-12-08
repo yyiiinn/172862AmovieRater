@@ -11,7 +11,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" android:layout_weight="1">
         <TextView
-                android:text="Enter your review for the movie: Venom"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/textView6" android:textSize="18sp"/>
         <RatingBar
