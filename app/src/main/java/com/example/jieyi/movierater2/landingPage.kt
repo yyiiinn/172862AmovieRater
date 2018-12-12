@@ -10,20 +10,47 @@ import android.widget.ListView
 import android.view.MenuItem
 import android.widget.ArrayAdapter
 import kotlinx.android.synthetic.main.activity_landing_page.*
+import android.R.id.edit
 
+import android.preference.PreferenceManager
+import kotlinx.android.synthetic.main.activity_movie_rater.*
 
 
 class landingPage : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+//        PreferenceManager.getDefaultSharedPreferences(this).edit().clear().apply()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_landing_page)
-//        var listView:ListView = findViewById<ListView>(R.id.listView)
-//        val listItems = arrayListOf<String>();
-//        listItems.add("hi")
-//        listItems.add("hello")
+        val preferences = PreferenceManager.getDefaultSharedPreferences(this).getAll()
+        var text3 = ""
+        var itemList = ArrayList<String>()
+//        val keys = PreferenceManager.getDefaultSharedPreferences(this).all
+        if(preferences != null){
+            for(i in preferences) {
+                var v = i.value.toString()
+                var items = v.split(",")
+                for (item in items) {
+                    item.replace("]", "")
+                    item.replace("[", "")
+                    itemList.add(item)
+                    text3 += item + "\n"
+                }
+            }
+            textView8.text = text3
+        }
+//        private lateinit var listView ListView
+//        listView = findViewById<ListView>(R.id.recipe_list_view)
+//        val recipeList = Recipe.getRecipeFromFile("recipes.json", this)
+//        val listItems = arrayOfNulls<String>(recipeList.size)
+//        for (i in 0 until recipeList.size) {
+//            val recipe = recipeList[i]
+//            listItems[i] = recipe.title
+//        }
+// 4
 //        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listItems)
 //        listView.adapter = adapter
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

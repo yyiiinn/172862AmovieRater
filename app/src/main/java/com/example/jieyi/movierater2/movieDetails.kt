@@ -3,6 +3,7 @@ package com.example.jieyi.movierater2
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.view.ContextMenu
 import android.view.MenuItem
 import android.view.View
@@ -11,25 +12,28 @@ import android.widget.RatingBar
 import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.activity_edit_movie.*
 import kotlinx.android.synthetic.main.activity_movie_details.*
+import kotlinx.android.synthetic.main.activity_movie_rater.*
 import kotlinx.android.synthetic.main.activity_movie_rating.*
+import android.content.SharedPreferences
+
 
 
 class movieDetails : AppCompatActivity() {
-    class Details(title:String, overview:String, language:String, date:String, suitable:String){
-        var title: String
-        var overview: String
-        var language: String
-        var date: String
-        var suitable: String
-        init{
-            this.title = title
-            this.overview = overview
-            this.language = language
-            this.date = date
-            this.suitable = suitable
-        }
-
-    }
+//    class Details(title:String, overview:String, language:String, date:String, suitable:String){
+//        var title: String
+//        var overview: String
+//        var language: String
+//        var date: String
+//        var suitable: String
+//        init{
+//            this.title = title
+//            this.overview = overview
+//            this.language = language
+//            this.date = date
+//            this.suitable = suitable
+//        }
+//
+//    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,13 +44,18 @@ class movieDetails : AppCompatActivity() {
         var starrating = intent.getStringExtra("bar")
         val linearLayout = findViewById<LinearLayout>(R.id.linear)
         if(review == null && starrating == null){
-        var movieInfo = Details(intent.getStringExtra("title"), intent.getStringExtra("overview"), intent.getStringExtra("language"),intent.getStringExtra("date"), intent.getStringExtra("suitable") )
-        nameView.text = movieInfo.title
-        descView.text = movieInfo.overview
+//        var movieInfo = Details(intent.getStringExtra("title"), intent.getStringExtra("overview"), intent.getStringExtra("language"),intent.getStringExtra("date"), intent.getStringExtra("suitable") )
+        var movieInfo = MovieDetailsClass()
+        nameView.text =  movieInfo.title
+        descView.text =  movieInfo.overview
         languageView.text = movieInfo.language
         dateView.text = movieInfo.date
         suitableView.text = movieInfo.suitable
-
+//        nameView.text = movieInfo.title
+//        descView.text = movieInfo.overview
+//        languageView.text = movieInfo.language
+//        dateView.text = movieInfo.date
+//        suitableView.text = movieInfo.suitable
         var addreview = TextView(this)
         addreview.text = "add review"
         linearLayout.addView(addreview)

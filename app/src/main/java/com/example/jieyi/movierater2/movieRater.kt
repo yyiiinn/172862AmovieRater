@@ -9,6 +9,11 @@ import android.view.MenuItem
 import android.widget.EditText
 import kotlinx.android.synthetic.main.activity_movie_rater.*
 import android.widget.Toast
+import android.R.attr.key
+import android.preference.PreferenceManager
+import android.content.SharedPreferences
+
+
 
 
 class movieRater : AppCompatActivity() {
@@ -26,6 +31,7 @@ class movieRater : AppCompatActivity() {
                 languageUsed.visibility= View.INVISIBLE
             }
         })
+
     }
     fun btnValidate():Boolean{
         var check = true;
@@ -94,13 +100,35 @@ class movieRater : AppCompatActivity() {
                 suitable = "Yes"
             }
             if(btnValidate()==true) {
-
+//                val list = StringBuilder()
+//                list.append(name).append(",")
+//                list.append(description).append(",")
+//                list.append(radio()).append(",")
+//                list.append(date).append(",")
+//                list.append(suitable).append(",")
+                var list = ArrayList<String>()
+                var newMovie = MovieDetailsClass()
+                newMovie.title = name
+                newMovie.overview = description
+                newMovie.language = radio()
+                newMovie.date = date
+                newMovie.suitable = suitable
+//                list.add(name)
+//                list.add(description)
+//                list.add(radio())
+//                list.add(date)
+//                list.add(suitable)
+                val preferences = PreferenceManager.getDefaultSharedPreferences(this)
+                val editor = preferences.edit()
+                editor.putString(name, list.toString())
+                editor.commit()
                 val intent = Intent(this, movieDetails::class.java)
-                intent.putExtra("title", name)
-                intent.putExtra("overview", description)
-                intent.putExtra("language", radio())
-                intent.putExtra("date", date)
-                intent.putExtra("suitable", suitable)
+
+//                intent.putExtra("title", name)
+//                intent.putExtra("overview", description)
+//                intent.putExtra("language", radio())
+//                intent.putExtra("date", date)
+//                intent.putExtra("suitable", suitable)
                 startActivity(intent)
             }
         }
