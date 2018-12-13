@@ -13,9 +13,6 @@ import android.R.attr.key
 import android.preference.PreferenceManager
 import android.content.SharedPreferences
 
-
-
-
 class movieRater : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -106,22 +103,34 @@ class movieRater : AppCompatActivity() {
 //                list.append(radio()).append(",")
 //                list.append(date).append(",")
 //                list.append(suitable).append(",")
-                var list = ArrayList<String>()
-                var newMovie = MovieDetailsClass()
-                newMovie.title = name
-                newMovie.overview = description
-                newMovie.language = radio()
-                newMovie.date = date
-                newMovie.suitable = suitable
+//                var list = ArrayList<String>()
+                val newMovie = MovieDetailsClass()
+                newMovie.setMovieTitle(name)
+                newMovie.setMovieDesc(description)
+                newMovie.setMovieLanguage(radio())
+                newMovie.setMovieDate(date)
+                newMovie.setMovieSuitable(suitable)
+                if(languageUsed.isChecked == true){
+                    newMovie.setMoviestrongLanguage(true)
+                }
+                else{
+                    newMovie.setMoviestrongLanguage(false)
+                }
+                if(violence.isChecked == true){
+                    newMovie.setMovieviolence(true)
+                }
+                else{
+                    newMovie.setMovieviolence(false)
+                }
 //                list.add(name)
 //                list.add(description)
 //                list.add(radio())
 //                list.add(date)
 //                list.add(suitable)
-                val preferences = PreferenceManager.getDefaultSharedPreferences(this)
-                val editor = preferences.edit()
-                editor.putString(name, list.toString())
-                editor.commit()
+//                val preferences = PreferenceManager.getDefaultSharedPreferences(this)
+//                val editor = preferences.edit()
+//                editor.putString(name, list.toString())
+//                editor.commit()
                 val intent = Intent(this, movieDetails::class.java)
 
 //                intent.putExtra("title", name)

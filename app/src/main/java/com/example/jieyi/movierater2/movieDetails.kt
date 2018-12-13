@@ -39,18 +39,29 @@ class movieDetails : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_details)
+        nameView.text =  "fgdf"
+        descView.text =  "fdsf"
+        languageView.text = "fd"
+        dateView.text = "gfd"
+        suitableView.text = "gfdgvd"
         registerForContextMenu(linear)
         var review = intent.getStringExtra("rating")
         var starrating = intent.getStringExtra("bar")
         val linearLayout = findViewById<LinearLayout>(R.id.linear)
         if(review == null && starrating == null){
 //        var movieInfo = Details(intent.getStringExtra("title"), intent.getStringExtra("overview"), intent.getStringExtra("language"),intent.getStringExtra("date"), intent.getStringExtra("suitable") )
-        var movieInfo = MovieDetailsClass()
-        nameView.text =  movieInfo.title
-        descView.text =  movieInfo.overview
-        languageView.text = movieInfo.language
-        dateView.text = movieInfo.date
-        suitableView.text = movieInfo.suitable
+
+//        nameView.text =  movieInfo.title
+//        descView.text =  movieInfo.overview
+//        languageView.text = movieInfo.language
+//        dateView.text = movieInfo.date
+//        suitableView.text = movieInfo.suitable
+            val movieInfo = MovieDetailsClass()
+            nameView.text =  movieInfo.getMovieTitle()
+            descView.text =  movieInfo.getMovieDesc()
+            languageView.text = movieInfo.getMovieLanguage()
+            dateView.text = movieInfo.getMovieDate()
+            suitableView.text = movieInfo.getMovieSuitable()
 //        nameView.text = movieInfo.title
 //        descView.text = movieInfo.overview
 //        languageView.text = movieInfo.language
